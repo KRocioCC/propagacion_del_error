@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Propagación del Error — Carbono-14 y Enfriamiento de Newton</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Propagación del Error </h1>
+ 
+</header>
+
+<main>
+  <!-- PROBLEMA 1 -->
+  <section class="card">
+    <h2>Problema 1: Datación por Carbono-14</h2>
+    <p>
+      Modelo: <code>f(t) = f(0)·e^{kt}</code> con <code>k = \ln(1/2)/T_{1/2}</code>.
+      Usamos <strong>t</strong> en función de la fracción restante <strong>f</strong>:
+      <code>t = T_{1/2}·\ln(f)/\ln(1/2)</code>.
+    </p>
+    <div class="grid">
+      <label>Vida media <small>(T<sub>1/2</sub>, años)</small>
+        <input id="c14_T" type="number" step="1" value="5730">
+      </label>
+      <label>Incertidumbre de T<sub>1/2</sub> (± años)
+        <input id="c14_dT" type="number" step="1" value="40">
+      </label>
+      <label>Porcentaje restante <small>(% del inicial)</small>
+        <input id="c14_p" type="number" step="0.001" value="77.45">
+      </label>
+      <label>Incertidumbre del porcentaje (± %)
+        <input id="c14_dp" type="number" step="0.001" value="0.10">
+      </label>
+    </div>
+    <div class="actions">
+      <button id="c14_btn">Calcular edad y error</button>
+      <button class="ghost" id="c14_reset">Reiniciar</button>
+    </div>
+    <div class="result" id="c14_out"></div>
+  </section>
+
+  <!-- PROBLEMA 2 -->
+  <section class="card">
+    <h2>Problema 2: Ley de Enfriamiento de Newton</h2>
+    <p>
+      <code>T(t)=T_s+(T_0-T_s)e^{-kt}</code>.
+      Con mediciones a la llegada (<em>t=0</em>) y una hora después (<em>t=1 h</em>):
+      <code>k = -\ln\!\big((T_1-T_s)/(T_0-T_s)\big)</code>.
+      El tiempo transcurrido desde la muerte hasta la llegada:
+      <code>τ = (1/k)\,\ln\!\big((T_v-T_s)/(T_0-T_s)\big)</code>,
+      donde <code>T_v</code> es 98.6°F (normal).
+    </p>
+    <div class="grid">
+      <label>Temperatura ambiente <small>(T<sub>s</sub>, °F)</small>
+        <input id="newt_Ts" type="number" step="0.1" value="69">
+      </label>
+      <label>Incertidumbre de T<sub>s</sub> (± °F)
+        <input id="newt_dTs" type="number" step="0.1" value="0.5">
+      </label>
+      <label>Temp. a la llegada 9:18 PM <small>(T<sub>0</sub>, °F)</small>
+        <input id="newt_T0" type="number" step="0.1" value="79.5">
+      </label>
+      <label>Incertidumbre de T<sub>0</sub> (± °F)
+        <input id="newt_dT0" type="number" step="0.1" value="0.2">
+      </label>
+      <label>Temp. una hora después <small>(T<sub>1</sub>, °F)</small>
+        <input id="newt_T1" type="number" step="0.1" value="78.0">
+      </label>
+      <label>Incertidumbre de T<sub>1</sub> (± °F)
+        <input id="newt_dT1" type="number" step="0.1" value="0.2">
+      </label>
+      <label>Temp. normal de la víctima <small>(T<sub>v</sub>, °F)</small>
+        <input id="newt_Tv" type="number" step="0.1" value="98.6">
+      </label>
+      <label>Incertidumbre de T<sub>v</sub> (± °F)
+        <input id="newt_dTv" type="number" step="0.1" value="0.2">
+      </label>
+    </div>
+    <div class="actions">
+      <button id="newt_btn">Calcular hora de muerte y error</button>
+      <button class="ghost" id="newt_reset">Reiniciar</button>
+    </div>
+    <div class="result" id="newt_out"></div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2025 — Página para práctica académica. Propagación del error con derivadas parciales numéricas.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
